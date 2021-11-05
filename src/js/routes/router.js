@@ -7,7 +7,8 @@ import notFound from "../pages/notFound"
 
 const routes = {
    '/':homePage,
-   '/todolist':todolistPage
+   '/todolist':todolistPage,
+   '/*':notFound
    
 }
 
