@@ -140,7 +140,7 @@
       this[globalName] = mainExports;
     }
   }
-})({"hkXzs":[function(require,module,exports) {
+})({"86JVM":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
@@ -482,18 +482,18 @@ var _notFound = require("../pages/notFound");
 var _notFoundDefault = parcelHelpers.interopDefault(_notFound);
 const routes = {
     '/': _homeDefault.default,
-    '/todolist': _todolisDefault.default
+    '/todolist': _todolisDefault.default,
+    '/*': _notFoundDefault.default
 };
-const Router = function(pathname) {
+const Router = function(pathname, params = null) {
     const isValidRoute = Object.keys(routes).find((key)=>key === pathname
     );
-    console.log(isValidRoute);
     const app = document.querySelector('#app');
     app.innerHTML = '';
     window.history.pushState({
     }, pathname, window.location.origin + pathname);
-    if (isValidRoute === undefined) app.append(_notFoundDefault.default());
-    else app.appendChild(routes[window.location.pathname]());
+    if (isValidRoute === undefined || isValidRoute === '') app.append(_notFoundDefault.default());
+    else app.appendChild(routes[isValidRoute](params));
 };
 exports.default = Router;
 
@@ -987,6 +987,6 @@ function v4(options, buf, offset) {
 }
 module.exports = v4;
 
-},{"./lib/rng":"9kT2H","./lib/bytesToUuid":"kcgOP"}]},["hkXzs","23obh"], "23obh", "parcelRequire683a")
+},{"./lib/rng":"9kT2H","./lib/bytesToUuid":"kcgOP"}]},["86JVM","23obh"], "23obh", "parcelRequire683a")
 
 //# sourceMappingURL=index.227406fc.js.map

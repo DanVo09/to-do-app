@@ -12,10 +12,9 @@ const routes = {
    
 }
 
-const Router = function(pathname){
+const Router = function(pathname, params=null){
 
     const isValidRoute = Object.keys(routes).find(key=> key===pathname)
-    console.log(isValidRoute)
     
     const app = document.querySelector('#app')
     app.innerHTML = ''
@@ -25,10 +24,10 @@ const Router = function(pathname){
         pathname,
         window.location.origin + pathname
     )
-    if(isValidRoute === undefined){
+    if(isValidRoute === undefined || isValidRoute ===''){
         app.append(notFound())
     }else{
-     app.appendChild(routes[window.location.pathname]())
+        app.appendChild(routes[isValidRoute](params) )
     }
     
 }
